@@ -4,6 +4,9 @@ import helmet from 'helmet';
 import cors from 'cors';
 import config from '../config.json';
 import { getFilesWithKeyword } from './utils/getFilesWithKeyword';
+import { errorHandler } from "./middleware/ErrorHandler";
+import { requestLogger } from "./middleware/RequestLogger";
+import routes from './routes';
 
 const app: Express = express();
 
@@ -14,6 +17,10 @@ const app: Express = express();
 app.set('json spaces', 4);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(requestLogger);
+app.use("/api", routes);
+app.use(errorHandler);
 
 // Handle logs in console during development
 if (process.env.NODE_ENV === 'development' || config.NODE_ENV === 'development') {

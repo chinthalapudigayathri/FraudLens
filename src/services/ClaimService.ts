@@ -3,6 +3,8 @@ import Claim from "../entities/Claim";
 
 import { FraudService } from "./FraudService";
 
+
+
 // create a service class
 //make sure to use export so that it can be imported in other modules
 export class ClaimService {
@@ -32,6 +34,7 @@ export class ClaimService {
 
     //saving the data
     return await claim.save();
+   
 }
 static async getClaimsByPatient(patientId: string) {
     return await Claim.find({ patientId });
