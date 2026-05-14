@@ -8,9 +8,9 @@ import { createPatient, getPatient, getAllPatients } from "../controllers/Patien
 const router = Router();
 
 //define the routes for the patient resource
-router.post("/patients", createPatient);
-router.get("/patients/:id", getPatient);
-router.get("/patients", getAllPatients);
+router.post("/", createPatient);
+router.get("/:id", getPatient);
+router.get("/", getAllPatients);
 
 //export the router
 export default router;
